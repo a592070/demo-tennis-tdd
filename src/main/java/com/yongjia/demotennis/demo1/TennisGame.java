@@ -44,12 +44,16 @@ public class TennisGame {
         if(isDeuce()){
             return "Deuce";
         }
-        if((this.player1Point >= 4 || this.player2Point >= 4) && Math.abs(this.player1Point - this.player2Point) == 1) {
+        if(isAdvantage()) {
             return this.player1Point > this.player2Point ?
                     String.format("%s Advantage", player1):
                     String.format("%s Advantage", player2);
         }
         return String.format("%s:%s", this.scoreMap.get(this.player1Point), this.scoreMap.get(this.player2Point));
+    }
+
+    private boolean isAdvantage() {
+        return (this.player1Point >= 4 || this.player2Point >= 4) && Math.abs(this.player1Point - this.player2Point) == 1;
     }
 
     private boolean isDeuce() {

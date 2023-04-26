@@ -102,4 +102,53 @@ class TennisGameTest {
         assertEquals(tennisGame.getScore(), "5:3");
         assertEquals(tennisGame.getDisplayScore(), String.format("%s Won", player1));
     }
+
+    @Test
+    void player1_vs_player2_is_4_vs_5() {
+        TennisGame tennisGame = new TennisGame(player1, player2);
+
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        assertEquals(tennisGame.getScore(), "4:5");
+        assertEquals(tennisGame.getDisplayScore(), String.format("%s Advantage", player2));
+    }
+
+    @Test
+    void player1_vs_player2_is_5_vs_5() {
+        TennisGame tennisGame = new TennisGame(player1, player2);
+
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player1);
+        assertEquals(tennisGame.getScore(), "5:5");
+        assertEquals(tennisGame.getDisplayScore(), "Deuce");
+    }
+
+
+    @Test
+    void player1_vs_player2_is_4_vs_0() {
+        TennisGame tennisGame = new TennisGame(player1, player2);
+
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+
+        assertEquals(tennisGame.getScore(), "4:0");
+        assertEquals(tennisGame.getDisplayScore(), String.format("%s Won", player1));
+    }
 }

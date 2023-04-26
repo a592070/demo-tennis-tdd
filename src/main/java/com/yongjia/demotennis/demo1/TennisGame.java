@@ -24,6 +24,8 @@ public class TennisGame {
     public void wonPoint(String player) {
         if(Objects.equals(this.player1, player)){
             this.player1Point++;
+        }else if(Objects.equals(this.player2, player)){
+            this.player2Point++;
         }
     }
 }

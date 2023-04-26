@@ -25,9 +25,16 @@ public class TennisGame {
             3, "forty"
     );
 
+    private GameState gameState;
+    private final GameState INITIAL = new GameStateInitial(this);
+    private final GameState DEUCE = new GameStateDeuce(this);
+    private final GameState ADVANTAGE = new GameStateAdvantage(this);
+    private final GameState GAME_OVER = new GameStateGameOver(this);
+
     public TennisGame(String player1, String player2) {
         this.player1 = player1;
         this.player2 = player2;
+        this.gameState = INITIAL;
     }
 
     public void wonPoint(String player) {
@@ -38,23 +45,23 @@ public class TennisGame {
         }else{
             throw new RuntimeException(String.format("Unknown player: %s", player));
         }
+        nextState();
+    }
+
+    private void nextState() {
+        if(isDeuce()){
+            this.gameState = DEUCE;
+        }
+        if(isAdvantage()) {
+            this.gameState = ADVANTAGE;
+        }
+        if(isGameOver()){
+            this.gameState = GAME_OVER;
+        }
     }
 
     public String getDisplayScore() {
-        if(isDeuce()){
-            return "Deuce";
-        }
-        if(isAdvantage()) {
-            return this.player1Point > this.player2Point ?
-                    String.format("%s Advantage", player1):
-                    String.format("%s Advantage", player2);
-        }
-        if(isGameOver()){
-            return this.player1Point > this.player2Point ?
-                    String.format("%s Won", player1):
-                    String.format("%s Won", player2);
-        }
-        return String.format("%s:%s", this.scoreMap.get(this.player1Point), this.scoreMap.get(this.player2Point));
+        return this.gameState.getDisplayScore();
     }
 
     private boolean isGameOver() {

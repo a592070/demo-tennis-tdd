@@ -16,4 +16,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public abstract class GameState {
     TennisGame tennisGame;
+
+    public abstract String getDisplayScore();
 }

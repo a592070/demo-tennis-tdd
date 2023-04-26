@@ -71,4 +71,19 @@ class TennisGameTest {
         assertEquals(tennisGame.getScore(), "3:3");
         assertEquals(tennisGame.getDisplayScore(), "Deuce");
     }
+
+    @Test
+    void player1_vs_player2_is_4_vs_3() {
+        TennisGame tennisGame = new TennisGame(player1, player2);
+
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player1);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player2);
+        tennisGame.wonPoint(player1);
+        assertEquals(tennisGame.getScore(), "4:3");
+        assertEquals(tennisGame.getDisplayScore(), String.format("%s Advantage", player1));
+    }
 }

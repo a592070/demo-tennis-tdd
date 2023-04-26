@@ -2,6 +2,8 @@ package com.yongjia.demotennis.demo1;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 public class TennisGame {
 
     @Getter
@@ -20,6 +22,8 @@ public class TennisGame {
     }
 
     public void wonPoint(String player) {
-
+        if(Objects.equals(this.player1, player)){
+            this.player1Point++;
+        }
     }
 }

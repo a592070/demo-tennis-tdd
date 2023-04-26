@@ -41,6 +41,7 @@ public class TennisGame {
     }
 
     public String getDisplayScore() {
+        if(this.player1Point == this.player2Point && this.player1Point >= 3) return "Deuce";
         return String.format("%s:%s", this.scoreMap.get(this.player1Point), this.scoreMap.get(this.player2Point));
     }
 

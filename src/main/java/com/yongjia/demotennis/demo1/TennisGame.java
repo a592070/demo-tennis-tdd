@@ -26,6 +26,8 @@ public class TennisGame {
             this.player1Point++;
         }else if(Objects.equals(this.player2, player)){
             this.player2Point++;
+        }else{
+            throw new RuntimeException(String.format("Unknown player: %s", player));
         }
     }
 }

@@ -1,7 +1,9 @@
 package com.yongjia.demotennis.demo1;
 
+import com.google.common.collect.ImmutableMap;
 import lombok.Getter;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class TennisGame {
@@ -15,6 +17,13 @@ public class TennisGame {
     private String player2;
     @Getter
     private int player2Point;
+
+    Map<Integer, String> scoreMap = ImmutableMap.of(
+            0, "love",
+            1, "fifteen",
+            2, "thirty",
+            3, "forty"
+    );
 
     public TennisGame(String player1, String player2) {
         this.player1 = player1;
@@ -32,7 +41,7 @@ public class TennisGame {
     }
 
     public String getDisplayScore() {
-        return null;
+        return String.format("%s:%s", this.scoreMap.get(this.player1Point), this.scoreMap.get(this.player2Point));
     }
 
     public String getScore() {

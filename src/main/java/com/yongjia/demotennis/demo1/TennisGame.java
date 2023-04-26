@@ -41,9 +41,16 @@ public class TennisGame {
     }
 
     public String getDisplayScore() {
-        if(this.player1Point == this.player2Point && this.player1Point >= 3) return "Deuce";
+        if(isDeuce()){
+            return "Deuce";
+        }
         return String.format("%s:%s", this.scoreMap.get(this.player1Point), this.scoreMap.get(this.player2Point));
     }
+
+    private boolean isDeuce() {
+        return this.player1Point == this.player2Point && this.player1Point >= 3;
+    }
+
 
     public String getScore() {
         return String.format("%d:%d", this.player1Point, this.player2Point);

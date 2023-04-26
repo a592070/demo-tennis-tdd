@@ -35,4 +35,13 @@ class TennisGameTest {
         TennisGame tennisGame = new TennisGame(player1, player2);
         assertThrows(RuntimeException.class, () -> tennisGame.wonPoint("player unknown"));
     }
+
+    @Test
+    void player1_vs_player2_is_1_vs_0() {
+        TennisGame tennisGame = new TennisGame(player1, player2);
+
+        tennisGame.wonPoint(player1);
+        assertEquals(tennisGame.getScore(), "1:0");
+        assertEquals(tennisGame.getDisplayScore(), "fifteen:love");
+    }
 }

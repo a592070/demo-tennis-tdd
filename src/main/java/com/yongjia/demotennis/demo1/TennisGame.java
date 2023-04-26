@@ -30,4 +30,12 @@ public class TennisGame {
             throw new RuntimeException(String.format("Unknown player: %s", player));
         }
     }
+
+    public String getDisplayScore() {
+        return null;
+    }
+
+    public String getScore() {
+        return String.format("%d:%d", this.player1Point, this.player2Point);
+    }
 }
